@@ -4,9 +4,10 @@ Databronnen:
 3.	Auto
 4.	Voorraad
 5.	Garages (affiliates)
-6.	Reviews
+6.	Reviews & Klachten
 
 1. Inkoop:
+Bevat gegevens over ingekochte producten bij fabrikanten, inclusief prijzen, aantallen, leverdata en de status van inkooporders.
     Fabrikant:
         fabrikantid (PK)
         naam
@@ -34,6 +35,7 @@ Databronnen:
         status
     
 2. Verkoop:
+Bevat alle verkooptransacties, inclusief welke producten aan welke klanten zijn verkocht, in welke aantallen en op welke datum.
     Fabrikant:
         fabrikantid (PK)
         naam
@@ -73,6 +75,7 @@ Databronnen:
         telefoonnummer
 
 Auto:
+Bevat informatie over auto’s en de koppeling met producten, zodat inzichtelijk is welke producten geschikt zijn voor welke voertuigen.
     Fabrikant:
         fabrikantid (PK)
         naam
@@ -104,6 +107,7 @@ Auto:
         generatie
 
 Voorraad:
+Bevat actuele voorraadgegevens per product en locatie, inclusief aantallen en minimale voorraadniveaus voor beheer en aanvulling.
     Fabrikant:
         fabrikantid (PK)
         naam
@@ -130,6 +134,7 @@ Voorraad:
         locatie
 
 Garages (affiliates):
+Bevat gegevens van aangesloten garages/partners, inclusief contactinformatie en samenwerkingsstatus.
     Garage:
         garageid (PK)
         naam
@@ -142,3 +147,56 @@ Garages (affiliates):
         partner_status
 
 Reviews:
+Bevat klantfeedback over producten in de vorm van reviews (beoordelingen) en klachten, gekoppeld aan klanten, producten en verkopen.
+    Fabrikant:
+        fabrikantid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Product:
+        productid (PK)
+        naam
+        versie
+        inkoopprijs
+        verkoopprijs
+        introductiedatum
+        stopdatum
+        fabrikant (FK)
+    Verkoop_Regel:
+        productid (Composite key)
+        verkoopid (Composite key)
+        aantal
+    Product_Verkoop:
+        verkoopid (PK)
+        verkoopdatum
+        klant (FK)
+        status
+    Klant:
+        klantid (PK)
+        voornaam
+        achternaam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Review:
+        reviewid (PK)
+        product (FK)
+        klant (FK)
+        verkoop (FK)
+        rating
+        titel
+        beschrijving
+        datum
+    Klacht:
+        klachtid (PK)
+        klant (FK)
+        titel
+        beschrijving
+        datum
