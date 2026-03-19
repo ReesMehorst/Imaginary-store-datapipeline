@@ -1,0 +1,34 @@
+CREATE TABLE Fabrikant (
+    fabrikantid int PRIMARY KEY,
+    naam varchar(255) NOT NULL,
+    adres varchar(255) NOT NULL,
+    postcode varchar(255),
+    stad varchar(255),
+    land varchar(255),
+    email varchar(255),
+    telefoonnummer varchar(16)
+);
+
+CREATE TABLE Product (
+    productid int PRIMARY KEY,
+    naam varchar(45) NOT NULL,
+    versie int,
+    inkoopprijs FLOAT,
+    verkoopprijs FLOAT NOT NULL,
+    introductiedatum DATE NOT NULL,
+    stopdatum DATE,
+    fabrikant int,
+
+    FOREIGN KEY (fabrikant) REFERENCES Fabrikant(fabrikantid)
+);
+
+CREATE TABLE Product_Inkoop(
+    inkoopid int PRIMARY KEY,
+    product int NOT NULL,
+    inkoopdatum DATE NOT NULL,
+    aantal int NOT NULL,
+    leverdatum DATE,
+    status ENUM('TO', 'BE', 'DETERMINED'), !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    FOREIGHN KEY (product) REFERENCES Product(productid)
+);
