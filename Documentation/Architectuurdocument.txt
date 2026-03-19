@@ -1,0 +1,144 @@
+Databronnen:
+1.	Inkoop
+2.	Verkoop
+3.	Auto
+4.	Voorraad
+5.	Garages (affiliates)
+6.	Reviews
+
+1. Inkoop:
+    Fabrikant:
+        fabrikantid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Product:
+        productid (PK)
+        naam
+        versie
+        inkoopprijs
+        verkoopprijs
+        introductiedatum
+        stopdatum
+        fabrikant (FK)
+    Product_Inkoop:
+        inkoopid (PK)
+        product (FK)
+        inkoopdatum
+        aantal
+        leverdatum
+        status
+    
+2. Verkoop:
+    Fabrikant:
+        fabrikantid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Product:
+        productid (PK)
+        naam
+        versie
+        inkoopprijs
+        verkoopprijs
+        introductiedatum
+        stopdatum
+        fabrikant (FK)
+    Verkoop_Regel:
+        productid (Composite key)
+        verkoopid (Composite key)
+        aantal
+    Product_Verkoop:
+        verkoopid (PK)
+        verkoopdatum
+        klant (FK)
+        status
+    Klant:
+        klantid (PK)
+        voornaam
+        achternaam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+
+Auto:
+    Fabrikant:
+        fabrikantid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Product:
+        productid (PK)
+        naam
+        versie
+        inkoopprijs
+        verkoopprijs
+        introductiedatum
+        stopdatum
+        fabrikant (FK)
+    Auto_Product:
+        autoid (Composite key)
+        productid (Composite key)
+        pastype
+    Auto:
+        autoid (PK)
+        merk
+        model
+        bouwjaar_van
+        bouwjaar_tot
+        generatie
+
+Voorraad:
+    Fabrikant:
+        fabrikantid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+    Product:
+        productid (PK)
+        naam
+        versie
+        inkoopprijs
+        verkoopprijs
+        introductiedatum
+        stopdatum
+        fabrikant (FK)
+    Opslag:
+        opslagid (PK)
+        product (FK)
+        aantal
+        minimaal_aantal
+        locatie
+
+Garages (affiliates):
+    Garage:
+        garageid (PK)
+        naam
+        adres
+        postcode
+        stad
+        land
+        email
+        telefoonnummer
+        partner_status
+
+Reviews:
